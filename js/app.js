@@ -135,19 +135,17 @@ formulario.addEventListener('submit', e =>  {
     // lee el valor del radio button
     const tipo = document.querySelector('input[name="tipo"]:checked').value;
 
-
+    // Limpiar resultados anteriores
+    const resultados = document.querySelector('#resultado div');
+    if(resultados != null) {
+        resultados.remove();
+    }
 
     // Revisamos que los campos no esten vacios
     if(marca === '' || year === '' || tipo === '') {
          // Interfaz imprimiendo un error
          interfaz.mostrarMensaje('Faltan datos, revisar el formulario y prueba de nuevo', 'error');
     } else {
-         // Limpiar resultados anteriores
-         const resultados = document.querySelector('#resultado div');
-         if(resultados != null) {
-              resultados.remove();
-         }
-
          // Instanciar seguro y mostrar interfaz
          const seguro = new Seguro(marca, year, tipo);
          // Cotizar el seguro
